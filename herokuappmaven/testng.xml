@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Personal projects/herokuappmaven">
+        <classes>
+            <class name="nopcommerce.tests.FormSubmissionTestSuite">
+                <methods>
+                    <include name="happyPathTestCase"/>
+                    <include name="emptyFieldsTestCase"/>
+                    <include name="invalidEmailFormatTestCase"/>
+                    <include name="specialCharactersTestCase"/>
+                    <include name="boundaryValuesTestCase"/>
+                </methods>
+            </class>
+            <class name="nopcommerce.tests.HomePageTestSuite">
+                <methods>
+                    <include name="testEmptyStoreSearchField"/>
+                    <include name="testStoreSearchWithValidData"/>
+                    <include name="testCaseInsensitivitySearchField"/>
+                    <include name="testPartialSearchTerm"/>
+                    <include name="testExactSearchTerms"/>
+                    <include name="testSearchResultPagination"/>
+                    <include name="testSearchResultSorting"/>
+                    <include name="testStoreSearchWithInvalidData"/>
+                    <include name="tabsNavigationTestCase"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
