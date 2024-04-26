@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <parameter name="browser" value="chrome"/>
+    <test verbose="2" preserve-order="true" name="C:/Personal projects/herokuappmaven">
+        <classes>
+            <class name="training.tests.LoginTestSuite">
+                <methods>
+                    <include name="registerAsNewClient"/>
+                    <include name="logOutTestCase"/>
+                    <include name="loginHappyFlowTestCase"/>
+                </methods>
+            </class>
+            <class name="training.tests.SearchFunctionalityTestSuite">
+                <methods>
+                    <include name="emptySearchField"/>
+                    <include name="validDataSearchField"/>
+                    <include name="sortSearchResultsByPrice"/>
+                    <include name="caseInsensitivityTestCase"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
