@@ -90,6 +90,39 @@ public class ElementsPage {
     protected WebElement rightClickMessage;
     @FindBy(xpath = "//p[@id='dynamicClickMessage']")
     protected WebElement dynamicClickMessage;
+    @FindBy(xpath = "(//li[@id='item-5'])[1]")
+    protected WebElement links;
+    @FindBy(xpath = "//a[@id='simpleLink']")
+    protected WebElement homeLink;
+    @FindBy(xpath = "(//div[@class='card-body'])[1]")
+    protected WebElement elements;
+    @FindBy(xpath = "(//li[@id='item-6'])[1]")
+    protected WebElement brokenLinksImages;
+    @FindBy(xpath = "//img[@src='/images/Toolsqa.jpg']")
+    protected WebElement validImage;
+    @FindBy(xpath = "//img[@src='/images/Toolsqa_1.jpg']")
+    protected WebElement brokenImage;
+    @FindBy(xpath = "//a[@href='http://demoqa.com']")
+    protected WebElement validLink;
+    @FindBy(xpath = "//a[@href='http://the-internet.herokuapp.com/status_codes/500']")
+    protected WebElement brokenLink;
+    @FindBy(xpath = "(//li[@id='item-7'])[1]")
+    protected WebElement uploadAndDownload;
+    @FindBy(id = "downloadButton")
+    protected WebElement downloadButton;
+    @FindBy(id = "uploadFile")
+    protected WebElement uploadFile;
+    @FindBy(id = "uploadedFilePath")
+    protected WebElement uploadedFilePath;
+    @FindBy(xpath = "(//li[@id='item-8'])[1]")
+    protected WebElement dynamicProperties;
+    @FindBy(id = "enableAfter")
+    protected WebElement enabledAfter5SecondsBtn;
+    @FindBy(id = "colorChange")
+    protected WebElement colorChangeBtn;
+    @FindBy(id = "visibleAfter")
+    protected WebElement visibleAfter5SecondsBtn;
+
 
 
 
