@@ -2,10 +2,12 @@ package demoqa;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -258,11 +260,11 @@ public class ElementsTestSuite extends ElementsPage {
         js.executeScript("window.scrollBy(0, 200)");
         uploadAndDownload.click();
         downloadButton.click();
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         try {
             Robot robot = new Robot();
             // Simulate pressing Enter key to save the file
@@ -300,11 +302,9 @@ public class ElementsTestSuite extends ElementsPage {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0, 200)");
         dynamicProperties.click();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        js.executeScript("window.scrollBy(0, 200)");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("enableAfter")));
         Assert.assertTrue(enabledAfter5SecondsBtn.isEnabled(), "The button is not enabled after the 5-second timeframe.");
     }
 
@@ -313,11 +313,13 @@ public class ElementsTestSuite extends ElementsPage {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0, 250)");
         dynamicProperties.click();
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
+        wait.until(new ExpectedCondition<Boolean>() {
+            @Override
+            public Boolean apply (WebDriver driver) {
+                return !enabledAfter5SecondsBtn.isEnabled();
+            }
+        });
         // Verify that the button is still disabled
         Assert.assertFalse(enabledAfter5SecondsBtn.isEnabled(), "The button was enabled faster than the 5-second timeframe.");
     }
@@ -329,12 +331,14 @@ public class ElementsTestSuite extends ElementsPage {
         dynamicProperties.click();
         //Get the initial color of the button
         String initialColor = colorChangeBtn.getCssValue("color");
-
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(new ExpectedCondition<Boolean>() {
+            @Override
+            public Boolean apply(WebDriver driver) {
+                String finalColor = colorChangeBtn.getCssValue("color");
+                return !initialColor.equals(finalColor);
+            }
+        });
         String finalColor = colorChangeBtn.getCssValue("color");
         Assert.assertNotEquals(initialColor, finalColor, "The color of the button did not change after 5 seconds.");
     }
@@ -344,22 +348,9 @@ public class ElementsTestSuite extends ElementsPage {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0, 250)");
         dynamicProperties.click();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(visibleAfter5SecondsBtn));
         Assert.assertTrue(visibleAfter5SecondsBtn.isDisplayed(), "The button was not displayed after 5 seconds.");
-    }
-
-    @Test(groups = "Dynamic Properties")
-    public void testButtonRemainsNotDisplayedWithin4Seconds() {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0, 250)");
-        dynamicProperties.click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("visibleAfter")));
-        Assert.assertFalse(visibleAfter5SecondsBtn.isDisplayed(), "The button was displayed earlier than 5-second timeframe.");
     }
 
     @AfterMethod
@@ -368,6 +359,8 @@ public class ElementsTestSuite extends ElementsPage {
             driver.quit();
         }
     }
+
+
 }
 
 

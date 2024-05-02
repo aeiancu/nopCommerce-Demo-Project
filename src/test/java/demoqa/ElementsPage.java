@@ -60,11 +60,11 @@ public class ElementsPage {
     protected WebElement excelFileCheckbox;
     @FindBy(xpath = "(//li[@id='item-2'])[1]")
     protected WebElement radioButton;
-    @FindBy(xpath = "//input[@id='yesRadio']")
+    @FindBy(xpath = "//label[@for='yesRadio']")
     protected WebElement yesRadio;
-    @FindBy(id = "impressiveRadio")
+    @FindBy(id = "//label[@for='impressiveRadio']")
     protected WebElement impressiveRadio;
-    @FindBy(id = "noRadio")
+    @FindBy(id = "//label[@for='noRadio']")
     protected WebElement noRadio;
     @FindBy(xpath = "(//li[@id='item-3'])[1]")
     protected WebElement webTables;
