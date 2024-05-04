@@ -1,5 +1,6 @@
-package demoqa;
+package demoqa.tests;
 
+import demoqa.pages.FormsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Point;

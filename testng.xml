@@ -1,22 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <parameter name="browser" value="chrome"/>
     <test verbose="2" preserve-order="true" name="C:/Personal projects/herokuappmaven">
         <classes>
-            <class name="training.tests.LoginTestSuite">
+            <class name="demoqa.tests.AlertsFrameWindowsTestSuite">
                 <methods>
-                    <include name="registerAsNewClient"/>
-                    <include name="logOutTestCase"/>
-                    <include name="loginHappyFlowTestCase"/>
+                    <include name="openLinkInNewTab"/>
+                    <include name="openLinkInNewWindow"/>
+                    <include name="verifyMessageInNewWindow"/>
+                    <include name="verifyStandardAlert"/>
+                    <include name="verifyTimerAlert"/>
+                    <include name="verifyAcceptPopupBox"/>
+                    <include name="verifyDismissPopupBox"/>
+                    <include name="verifyAcceptPromptBoxWithTextField"/>
+                    <include name="verifyParentFrameText"/>
+                    <include name="verifyChildFrame1Text"/>
+                    <include name="verifyChildFrame2Text"/>
+                    <include name="verifyNestedFrames"/>
                 </methods>
             </class>
-            <class name="training.tests.SearchFunctionalityTestSuite">
+            <class name="demoqa.tests.ElementsTestSuite">
                 <methods>
-                    <include name="emptySearchField"/>
-                    <include name="validDataSearchField"/>
-                    <include name="sortSearchResultsByPrice"/>
-                    <include name="caseInsensitivityTestCase"/>
+                    <include name="fillTheFormWithValidData"/>
+                    <include name="expandCheckBoxes"/>
+                    <include name="clickOnRadioButtons"/>
+                    <include name="extractMaxAgeFromTable"/>
+                    <include name="extractSalaryOfOldestEmployee"/>
+                    <include name="extractEmailAndDepartmentOfYoungestEmployee"/>
+                    <include name="performMouseActions"/>
+                    <include name="followLinkInNewTab"/>
+                    <include name="verifyValidImageInNewTab"/>
+                    <include name="verifyBrokenImage"/>
+                    <include name="verifyValidLink"/>
+                    <include name="verifyBrokenLink"/>
+                    <include name="downloadFile"/>
+                    <include name="uploadFile"/>
+                    <include name="testButtonEnabledAfterDelay"/>
+                    <include name="testButtonRemainsDisabledWithin4Seconds"/>
+                    <include name="testButtonColorChangeAfter5Seconds"/>
+                    <include name="testVisibilityOfButtonAfter5Seconds"/>
+                </methods>
+            </class>
+            <class name="demoqa.tests.FormsTestSuite">
+                <methods>
+                    <include name="fillInFormWithValidData"/>
                 </methods>
             </class>
         </classes>
