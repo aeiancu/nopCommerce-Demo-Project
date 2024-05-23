@@ -52,4 +52,19 @@ public class AlertsFrameWindowsPage {
     protected WebElement childNestedFrameText;
     @FindBy(xpath = "//iframe[@srcdoc='<p>Child Iframe</p>']")
     protected WebElement childNestedFrame;
+    @FindBy(xpath = "//li[@id='item-4']//span[text()='Modal Dialogs']")
+    protected WebElement modalDialogs;
+    @FindBy(id = "showSmallModal")
+    protected WebElement smallModalBtn;
+    @FindBy(xpath = "//div[text()='This is a small modal. It has very less content']")
+    protected WebElement smallModalBody;
+    @FindBy(id = "closeSmallModal")
+    protected WebElement closeSmallModalBtn;
+    @FindBy(id = "showLargeModal")
+    protected WebElement largeModalBtn;
+    @FindBy(xpath = "//p")
+    protected WebElement largeModalBody;
+    @FindBy(id = "closeLargeModal")
+    protected WebElement closeLargeModalBtn;
+
 }

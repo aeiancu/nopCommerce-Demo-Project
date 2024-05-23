@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -105,7 +106,7 @@ public class AlertsFrameWindowsTestSuite extends AlertsFrameWindowsPage {
         try {
             Alert alert = driver.switchTo().alert();
             alert.accept();
-            //Assert that no alert it present after acceptance
+            //Assert that no alert is present after acceptance
             //This line will throw NoAlertPresentException if the alert is still present
             driver.switchTo().alert();
             System.out.println("Alert accepted successfully.");
@@ -211,17 +212,35 @@ public class AlertsFrameWindowsTestSuite extends AlertsFrameWindowsPage {
         String expectedChildNestedFrameMessage = "Child frame";
         Assert.assertEquals(actualChildNestedFrameMessage, expectedChildNestedFrameMessage, "The messages do not match.");
         driver.switchTo().defaultContent();
-
-
-
     }
 
-  /*  @AfterMethod
+    @Test(groups = "Modal Dialogs")
+    public void verifySmallModalDialog() {
+        modalDialogs.click();
+        smallModalBtn.click();
+        String actualMessage = smallModalBody.getText();
+        String expectedMessage = "This is a small modal. It has very less content";
+        Assert.assertEquals(actualMessage, expectedMessage, "The messages do not match.");
+        closeSmallModalBtn.click();
+    }
+
+    @Test(groups = "Modal Dialogs")
+    public void verifyLargeModalDialog() {
+        modalDialogs.click();
+        largeModalBtn.click();
+        String actualMessage = largeModalBody.getText();
+        String expectedMessage = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. " +
+                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type " +
+                "specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised " +
+                "in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker " +
+                "including versions of Lorem Ipsum.";
+        closeLargeModalBtn.click();
+    }
+
+    @AfterMethod
     public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
     }
-
-   */
 }
